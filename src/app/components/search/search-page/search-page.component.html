@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Search</h2>
+ <form class="example" [formGroup]="searchedForm" (ngSubmit)="onSubmit()">
+  <input type="text" placeholder="Search.." name="search2" formControlName="searchedWord">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+    <!-- Slide -->
+    <div class="card" *ngFor="let mostsearched of searchedProductsByCount">
+      <img src="https://vknow.in/images/thumbs/default-image_600.png" alt="Avatar">
+      <div class="container">
+        <h4><b>{{ mostsearched.description }}</b></h4>
+        <!-- <p>{{ mostsearched.sku }}</p> -->
+      </div>
+    </div>
+    
+ 
+
+</body>
+</html>
