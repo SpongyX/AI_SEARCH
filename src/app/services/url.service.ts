@@ -14,5 +14,6 @@ export class UrlService {
   //----------------- Search Action Urls --------------------------
   public GetProducts: string = this.ProductUrl + '/Product/GetProduct/';
   public SearchedProduct: string = this.ProductUrl + '/Product/GetProductByWord?ContainsWord=';
-  public MostSearched: string = this.ProductUrl + '/Product/GetMostSearched/'
+  public MostSearched: string = this.ProductUrl + '/Product/GetMostSearched/';
+  public MostSearchedByCategory: string = this.ProductUrl + '/Product/GetByCategory/';
 }

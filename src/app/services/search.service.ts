@@ -24,4 +24,7 @@ export class SearchService {
       console.log( this.urlService.SearchedProduct + searchedWord);
       return this.httpService.post(this.urlService.SearchedProduct + searchedWord.searchedWord)
     }
+    SearchedByCategory(): Observable<ResponseMessage>{
+      return this.httpService.get(this.urlService.MostSearchedByCategory);
+    }
 }

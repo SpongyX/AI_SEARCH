@@ -6,7 +6,7 @@ body {
     box-sizing: border-box;
   }
   
-  form.example input[type=text] {
+  form.searchClass input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
@@ -15,7 +15,7 @@ body {
     background: #f1f1f1;
   }
   
-  form.example button {
+  form.searchClass button {
     float: left;
     width: 20%;
     padding: 10px;
@@ -27,11 +27,11 @@ body {
     cursor: pointer;
   }
   
-  form.example button:hover {
+  form.searchClass button:hover {
     background: #0b7dda;
   }
   
-  form.example::after {
+  form.searchClass::after {
     content: "";
     clear: both;
     display: table;
@@ -52,9 +52,27 @@ body {
     text-align: center;
     padding: 2px 16px;
   }
-
-
-
+  .radio-container {
+    display: flex;
+  }
   
+  .radio-container div {
+    margin-right: 20px;
+  }
+  
+
+
+  /* SLIDER */
+
+
+  .carousel {
+    width: 100%;
+  }
+  
+  .slide {
+    display: flex;
+    justify-content: center;
+    margin: 0 10px;
+  }
 
   
