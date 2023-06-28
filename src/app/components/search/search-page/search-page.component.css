@@ -6,73 +6,149 @@ body {
     box-sizing: border-box;
   }
   
-  form.searchClass input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
+ .header-elements{
+  margin:1rem;
+ }
+  div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
     float: left;
-    width: 80%;
-    background: #f1f1f1;
+    width: 180px;
   }
   
-  form.searchClass button {
-    float: left;
-    width: 20%;
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
+  div.gallery:hover {
+    border: 1px solid #777;
   }
   
-  form.searchClass button:hover {
-    background: #0b7dda;
-  }
-  
-  form.searchClass::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-  .card {
-    float: left;
-    width: 25%;
-    padding: 16px;
-    box-sizing: border-box;
-  }
-
-  .card img {
+  div.gallery img {
     width: 100%;
+    height: auto;
   }
-
-  .card .container {
+  
+  div.desc {
+    padding: 15px;
     text-align: center;
-    padding: 2px 16px;
+    white-space: nowrap;
   }
-  .radio-container {
-    display: flex;
-  }
-  
-  .radio-container div {
-    margin-right: 20px;
+
+  .input-container {
+    width: 220px;
+    position: relative;
   }
   
-
-
-  /* SLIDER */
-
-
-  .carousel {
+  .icon {
+    position: absolute;
+    right: 10px;
+    top: calc(50% + 5px);
+    transform: translateY(calc(-50% - 5px));
+  }
+  
+  .input {
     width: 100%;
+    height: 40px;
+    padding: 10px;
+    transition: .2s linear;
+    border: 2.5px solid black;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
   
-  .slide {
+  .input:focus {
+    outline: none;
+    border: 0.5px solid black;
+    box-shadow: -5px -5px 0px black;
+  }
+  
+  .input-container:hover > .icon {
+    animation: anim 1s linear infinite;
+  }
+  
+  @keyframes anim {
+    0%,
+    100% {
+      transform: translateY(calc(-50% - 5px)) scale(1);
+    }
+  
+    50% {
+      transform: translateY(calc(-50% - 5px)) scale(1.1);
+    }
+  }
+
+  .container {
     display: flex;
     justify-content: center;
-    margin: 0 10px;
+    align-items: center;
+    /* Additional styling properties for the container if desired */
   }
+
+  :focus {
+    outline: 0;
+    border-color: #2260ff;
+    box-shadow: 0 0 0 4px #183d9a;
+  }
+  
+  .mydict div {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+  
+   .radio-dict[type="radio"] {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  
+  .radio-dict[type="radio"]:checked + span {
+    box-shadow: 0 0 0 0.0625em #0043ed;
+    background-color: #dee7ff;
+    z-index: 1;
+    color: #0043ed;
+  }
+  .clear[type="radio"]:checked + span {
+    box-shadow: 0 0 0 0.0625em red;
+    background-color: #dee7ff;
+    z-index: 1;
+    color: red;
+  }
+  .clear[type="radio"] {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    color: red;
+  }
+  
+  label span {
+    display: block;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 0.375em .75em;
+    position: relative;
+    margin-left: .0625em;
+    box-shadow: 0 0 0 0.0625em #b5bfd9;
+    letter-spacing: .05em;
+    color: #3e4963;
+    text-align: center;
+    transition: background-color .5s ease;
+  }
+  
+  label:first-child span {
+    border-radius: .375em 0 0 .375em;
+  }
+  
+  label:last-child span {
+    border-radius: 0 .375em .375em 0;
+  }
+
 
   

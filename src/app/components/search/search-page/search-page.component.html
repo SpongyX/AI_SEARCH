@@ -1,77 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <h2>Search product by name</h2>
- <form class="searchClass" [formGroup]="searchedForm" (ngSubmit)="onSubmit()">
-  <input type="text" placeholder="Search.." name="search2" formControlName="searchedWord">
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form>
-<div>
-  <label>
-    <input type="radio" name="selection" [(ngModel)]="selectedOption" value="products" (change)="toggleData()" />
-    Display All Products
-  </label>
-</div>
-<div>
-  <label>
-    <input type="radio" name="selection" [(ngModel)]="selectedOption" value="searchedProductsByCount" (change)="toggleData()" />
-    Display Searched Products by Count
-  </label>
-</div>
-<div>
-  <label>
-    <input type="radio" name="selection" [(ngModel)]="selectedOption" value="searchedByCategory" (change)="toggleData()" />
-    Display Searched by Category
-  </label>
-</div>
-<label>
-  <input type="radio" name="selection" [(ngModel)]="selectedOption" value="none" (change)="toggleData()" />
-  Clear
-</label>
+  <div class="header-elements">
+  <h2>Search product by name</h2>
+  <form class="searchClass" [formGroup]="searchedForm" (ngSubmit)="onSubmit()">
+    <div class="input-container">
+      <input type="text" name="text" class="input" placeholder="search..." formControlName="searchedWord">
+      <span class="icon"> 
+        <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path opacity="1" d="M14 5H20" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="1" d="M14 8H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="1" d="M22 22L20 20" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+      </span>
+    </div>
+  </form>
 
-
-<!-- Slide -->
-<div *ngIf="selectedOption === 'products'">
-  <div class="card" *ngFor="let product of products">
-      <img src="https://vknow.in/images/thumbs/default-image_600.png" alt="Avatar">
-      <div class="container">
-        <h4><b>{{ product.description }}</b></h4>
-        <!-- <p>{{ mostsearched.sku }}</p> -->
+    <div class="mydict">
+      <div>
+        <label>
+          <input class="radio-dict" type="radio" name="radio" checked=""[(ngModel)]="selectedOption" value="products" (change)="toggleData()">
+          <span>All products</span>
+        </label>
+        <label>
+          <input class="radio-dict" type="radio" name="radio" [(ngModel)]="selectedOption" value="searchedProductsByCount"
+          (change)="toggleData()">
+          <span>Most searched</span>
+        </label>
+        <label>
+          <input class="radio-dict" type="radio" name="radio" [(ngModel)]="selectedOption" value="searchedByCategory"
+          (change)="toggleData()">
+          <span>Searched Categories</span>
+        </label>
+        <label>
+          <input class="clear" type="radio" name="radio" [(ngModel)]="selectedOption" value="none" (change)="toggleData()">
+          <span>Clear</span>
+        </label>
+        
       </div>
     </div>
+  </div>
+ 
+
+  <div class="grid-gallery">
+  <div *ngIf="selectedOption === 'products'">
+  <div class="gallery" *ngFor="let product of products">
+    <a target="_blank" href="img_5terre.jpg">
+      <img src="https://vknow.in/images/thumbs/default-image_600.png" alt="Cinque Terre" width="600" height="400">
+    </a>
+    <div class="desc"><h5><b>{{ product.name }}</b></h5></div>
+  </div>
 </div>
 
 <div *ngIf="selectedOption === 'searchedProductsByCount'">
-      <div class="card" *ngFor="let mostsearched of searchedProductsByCount">
-      <img src="https://vknow.in/images/thumbs/default-image_600.png" alt="Avatar">
-      <div class="container">
-        <h4><b>{{ mostsearched.description }}</b></h4>
-        <!-- <p>{{ mostsearched.sku }}</p> -->
-      </div>
-    </div>
-  </div>
-  <div *ngIf="selectedOption === 'searchedByCategory'">
-    <div class="card" *ngFor="let mostsearchedByCategory of searchedByCategory">
-    <img src="https://vknow.in/images/thumbs/default-image_600.png" alt="Avatar">
-    <div class="container">
-      <h4><b>{{ mostsearchedByCategory.description }}</b></h4>
-      <!-- <p>{{ mostsearched.sku }}</p> -->
-    </div>
+  <div class="gallery" *ngFor="let mostsearched of searchedProductsByCount">
+    <a target="_blank" href="img_5terre.jpg">
+      <img src="https://vknow.in/images/thumbs/default-image_600.png" alt="Cinque Terre" width="600" height="400">
+    </a>
+    <div class="desc"><h5><b>SKU:{{ mostsearched.sku }}</b></h5></div>
   </div>
 </div>
 
+<div *ngIf="selectedOption === 'searchedByCategory'">
+  <div class="gallery" *ngFor="let mostsearchedByCategory of searchedByCategory">
+    <a target="_blank" href="img_5terre.jpg">
+      <img src="https://vknow.in/images/thumbs/default-image_600.png" alt="Cinque Terre" width="600" height="400">
+    </a>
+    <div class="desc"><h5><b>{{ mostsearchedByCategory.name }}</b></h5></div>
+  </div>
+</div>
+</div>
+   
 
 
-<!-- SLIDER -->
+
+
 
 
 
 
 </body>
+
 </html>
